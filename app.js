@@ -89,9 +89,17 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/secrets", authenticateToken, (req, res) => {
-  res.render("secrets", { user: req.user });
+app.get("/secrets", authenticateToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.redirect("/login");
+
+    res.render("secrets", { user });
+  } catch (err) {
+    res.redirect("/login");
+  }
 });
+
 
 app.get("/logout", (req, res) => {
   res.clearCookie("token");
