@@ -9,13 +9,30 @@
         <div class="card-body">
           <form action="/register" method="POST">
             <div class="form-group mb-3">
-              <label for="email">Email</label>
-              <input type="email" name="username" class="form-control" id="email">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control" id="name" required>
             </div>
+
+            <div class="form-group mb-3">
+              <label for="email">Email</label>
+              <input type="email" name="username" class="form-control" id="email" required>
+              <small class="form-text text-muted">Enter a valid email address.</small>
+            </div>
+
             <div class="form-group mb-3">
               <label for="password">Password</label>
-              <input type="password" name="password" class="form-control" id="password">
+              <input type="password" name="password" class="form-control" id="password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}">
+              <small class="form-text text-muted">
+                Password must contain:
+                <ul>
+                  <li>At least 1 uppercase letter</li>
+                  <li>At least 1 lowercase letter</li>
+                  <li>At least 1 number</li>
+                  <li>Minimum 6 characters</li>
+                </ul>
+              </small>
             </div>
+
             <button type="submit" class="btn btn-dark mt-3">Register</button>
           </form>
         </div>
