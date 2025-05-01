@@ -63,7 +63,6 @@ app.post("/register", async (req, res) => {
     await newUser.save();
     res.redirect("/login");
   } catch (err) {
-    console.log(err);
     res.send("Registration failed.");
   }
 });
